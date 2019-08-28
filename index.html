@@ -121,6 +121,12 @@
         drawBall();
         drawPaddle();
         collisionDetection();
+
+        function drawScore() {
+            ctx.font = "16px Arial";
+            ctx.fillStyle = "#0095DD";
+            ctx.fillText("Score: "+score, 8, 20);
+        }
         
         if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
             dx = -dx;
