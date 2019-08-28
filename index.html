@@ -89,7 +89,6 @@
                     if(score == brickRowCount*brickColumnCount) {
                         alert("YOU WIN, CONGRATULATIONS!");
                         document.location.reload();
-                        clearInterval(interval); // Needed for Chrome to end game
                     }
                 }
             }
@@ -146,6 +145,8 @@
             ctx.fillText("Score: "+score, 8, 20);
         }
 
+        drawLives();
+
         function drawLives() {
             ctx.font = "16px Arial";
             ctx.fillStyle = "#0095DD";
@@ -168,7 +169,6 @@
                 if(!lives) {
                     alert("GAME OVER");
                     document.location.reload();
-                    clearInterval(interval); // Needed for Chrome to end game
                 }
                 else {
                     x = canvas.width/2;
@@ -190,9 +190,11 @@
         
         x += dx;
         y += dy;
+
+        requestAnimationFrame(draw); // Improve rendering
     }
 
-    let interval = setInterval(draw, 10);
+    draw();
 
     
 </script>
